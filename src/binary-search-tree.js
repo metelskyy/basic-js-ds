@@ -39,14 +39,39 @@ class BinarySearchTree {
     }
   }
 
-  has(/* data */) {
-    throw new NotImplementedError("Not implemented");
-    // remove line with error and write your code here
+  has(data) {
+    if (!this.tree) return false;
+    let current = this.tree;
+    let found = false;
+    while (current && !found) {
+      if (data < current.data) {
+        current = current.left;
+      } else if (data > current.data) {
+        current = current.right;
+      } else {
+        return true;
+      }
+    }
+    return false;
   }
 
-  find(/* data */) {
-    throw new NotImplementedError("Not implemented");
-    // remove line with error and write your code here
+  find(data) {
+    if (!this.tree) return null;
+
+    let current = this.tree;
+    let found = false;
+    while (current && !found) {
+      if (data < current.data) {
+        current = current.left;
+      } else if (data > current.data) {
+        current = current.right;
+      } else {
+        found = current;
+      }
+    }
+
+    if (!found) return null;
+    return found;
   }
 
   remove(/* data */) {
@@ -55,13 +80,21 @@ class BinarySearchTree {
   }
 
   min() {
-    throw new NotImplementedError("Not implemented");
-    // remove line with error and write your code here
+    if (!this.tree) return null;
+    let current = this.tree;
+    while (current.left !== null) {
+      current = current.left;
+    }
+    return current.data;
   }
 
   max() {
-    throw new NotImplementedError("Not implemented");
-    // remove line with error and write your code here
+    if (!this.tree) return null;
+    let current = this.tree;
+    while (current.right !== null) {
+      current = current.right;
+    }
+    return current.data;
   }
 }
 
